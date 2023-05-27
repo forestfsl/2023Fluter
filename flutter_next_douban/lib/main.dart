@@ -1,11 +1,27 @@
+// ignore_for_file: avoid_print
+
+import 'dart:async';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_next_douban/module/category/category_page.dart';
+import 'package:flutter_next_douban/module/model/douban_model.dart';
+import 'package:flutter_next_douban/module/serach/search_page.dart';
 
 void main() {
-  runApp(const MyApp());
+  FlutterError.onError = (FlutterErrorDetails details) {
+    print('flutter catch error: $details');
+  };
+  runZoned(() => runApp(MyApp()), onError: (Object obj, StackTrace stack) {
+    print('fluuter catch error, obj: $obj, \nstack: $stack');
+  });
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
+
+  Map<String, WidgetBuilder> _routes() {
+    return {'/search': (BuildContext context) => SearchPage()};
+  }
 
   // This widget is the root of your application.
   @override
@@ -13,25 +29,11 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // TRY THIS: Try running your application with "flutter run". You'll see
-        // the application has a blue toolbar. Then, without quitting the app,
-        // try changing the seedColor in the colorScheme below to Colors.green
-        // and then invoke "hot reload" (save your changes or press the "hot
-        // reload" button in a Flutter-supported IDE, or press "r" if you used
-        // the command line to start the app).
-        //
-        // Notice that the counter didn't reset back to zero; the application
-        // state is not lost during the reload. To reset the state, use hot
-        // restart instead.
-        //
-        // This works for code too, not just values: Most code changes can be
-        // tested with just a hot reload.
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      routes: _routes(),
+      home: const MyHomePage(title: 'Next Douban'),
     );
   }
 }
@@ -58,14 +60,14 @@ class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
 
   void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
+    //原来的逻辑
+    // setState(() {
+    //   _counter++;
+    // });
+    // Navigator.pushNamed(context, '/search');
+    Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) {
+      return CategoryPage(category: DoubanCategory.Book);
+    }));
   }
 
   @override
