@@ -3,6 +3,8 @@
 import 'dart:ffi';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_next_douban/module/category/category_page.dart';
+import 'package:flutter_next_douban/module/model/douban_model.dart';
 import 'package:flutter_next_douban/module/widgets/root_page.dart';
 import 'package:flutter_next_douban/module/widgets/search_bar.dart';
 
@@ -13,7 +15,11 @@ class HomePage extends StatefulWidget {
 
 class _HomeState extends State<HomePage> {
   void _onSearchBarTapped() {
-    Navigator.pushNamed(context, '/search');
+    // Navigator.pushNamed(context, '/search');
+    //临时假数据测试
+    Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) {
+      return CategoryPage(category: DoubanCategory.Movie);
+    }));
   }
 
   bool _onScanTapped() {
@@ -83,3 +89,4 @@ class _HomeState extends State<HomePage> {
     );
   }
 }
+// https://github.com/flutter/flutter/issues/93721

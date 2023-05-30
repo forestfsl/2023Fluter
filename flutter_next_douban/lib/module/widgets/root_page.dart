@@ -9,14 +9,21 @@ class RootPage extends StatelessWidget {
   final bool hasLeading;
   final TabBar? tabbar;
   final Widget? body;
+  final Color? backgroundColor;
   RootPage(
-      {Key? key, this.title, required this.hasLeading, this.tabbar, this.body});
+      {Key? key,
+      this.title,
+      this.hasLeading = true,
+      this.tabbar,
+      this.body,
+      this.backgroundColor = const Color(0xFF33C9FF)});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: title != null
           ? AppBar(
+              backgroundColor: this.backgroundColor,
               leading: hasLeading
                   ? Builder(
                       builder: (BuildContext context) {
