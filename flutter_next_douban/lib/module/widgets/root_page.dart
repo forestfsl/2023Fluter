@@ -1,4 +1,4 @@
-// ignore_for_file: empty_statements, unnecessary_this, use_key_in_widget_constructors, prefer_const_constructors_in_immutables
+// ignore_for_file: empty_statements, unnecessary_this, use_key_in_widget_constructors, prefer_const_constructors_in_immutables, prefer_const_constructors
 
 import 'dart:ffi';
 
@@ -14,7 +14,6 @@ class RootPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return Scaffold(
       appBar: title != null
           ? AppBar(

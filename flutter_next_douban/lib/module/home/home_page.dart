@@ -16,6 +16,10 @@ class _HomeState extends State<HomePage> {
     Navigator.pushNamed(context, '/search');
   }
 
+  bool _onScanTapped() {
+    return true;
+  }
+
   @override
   Widget build(BuildContext context) {
     return RootPage(
@@ -32,44 +36,50 @@ class _HomeState extends State<HomePage> {
 
   Widget _configTopWidget() {
     return Container(
-        height: 170,
-        color: Color(0xFF33C9FF),
-        child: SafeArea(
-            child: Container(
-          height: 52,
-          // width: 100,
-          alignment: Alignment.topCenter,
-          padding: EdgeInsets.only(top: 20, right: 100, left: 15),
-          //color: Colors.red,
-          child: _configSearchBar(),
-        )));
+      height: 170,
+      color: Color(0xFF33C9FF),
+      child: SafeArea(
+          child: Container(
+        height: 52,
+        alignment: Alignment.topCenter,
+        padding: EdgeInsets.only(top: 20, right: 20, left: 15),
+        child: _configSearchBar(),
+      )),
+    );
   }
 
   Widget _configBottomWidget() {
     return Positioned(
       top: 150,
-      child: Container(height: 500),
+      child: Container(width: 300, height: 500),
     );
   }
 
   Widget _configSearchBar() {
+    //   return Image(
+    //       image: AssetImage('lib/images/want_watch.png'), width: 54, height: 54);
+    // }
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Expanded(
-          child: GestureDetector(
-            behavior: HitTestBehavior.opaque,
-            onTap: _onSearchBarTapped,
-            child: SearchBar1(isEnable: false),
-          ),
+      children: <Widget>[
+        GestureDetector(
+          behavior: HitTestBehavior.opaque,
+          onTap: _onSearchBarTapped,
+          child: SearchBar1(isEnable: false),
         ),
-        Image(
-          image: AssetImage('lib/images/scan.png'),
-          width: 32,
-          height: 32,
-        )
+        Expanded(
+            child: IconButton(
+                onPressed: _onScanTapped,
+                icon: Icon(Icons.search_sharp),
+                iconSize: 26)),
+
+        // Expanded(
+        //     child: Image(
+        //   image: AssetImage('lib/images/scan.png'),
+        //   width: 46,
+        //   height: 46,
+        // ))
       ],
     );
-    // return SearchBar();
   }
 }
