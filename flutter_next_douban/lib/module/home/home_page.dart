@@ -4,7 +4,9 @@ import 'dart:ffi';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_next_douban/module/category/category_page.dart';
+import 'package:flutter_next_douban/module/home/recomment_item.dart';
 import 'package:flutter_next_douban/module/model/douban_model.dart';
+import 'package:flutter_next_douban/module/public/app_util.dart';
 import 'package:flutter_next_douban/module/widgets/root_page.dart';
 import 'package:flutter_next_douban/module/widgets/search_bar.dart';
 
@@ -42,7 +44,7 @@ class _HomeState extends State<HomePage> {
 
   Widget _configTopWidget() {
     return Container(
-      height: 170,
+      height: 150,
       color: Color(0xFF33C9FF),
       child: SafeArea(
           child: Container(
@@ -56,8 +58,27 @@ class _HomeState extends State<HomePage> {
 
   Widget _configBottomWidget() {
     return Positioned(
-      top: 150,
-      child: Container(width: 300, height: 500),
+      top: 102,
+      child: Container(
+        padding: EdgeInsets.zero,
+        width: AppUtil.screenWidth,
+        height: AppUtil.screenHeight - 102,
+        // color: Colors.green,
+        child: ListView(children: [
+          RecommentItem(
+            context: context,
+            category: DoubanCategory.Movie,
+          ),
+          RecommentItem(
+            context: context,
+            category: DoubanCategory.Book,
+          ),
+          RecommentItem(
+            context: context,
+            category: DoubanCategory.Music,
+          ),
+        ]),
+      ),
     );
   }
 

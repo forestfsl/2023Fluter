@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_next_douban/module/home/home_page.dart';
 import 'package:flutter_next_douban/module/person/person_page.dart';
+import 'package:flutter_next_douban/module/public/app_util.dart';
 
 class NavigationBar1 extends StatefulWidget {
   @override
@@ -23,8 +24,14 @@ class _NavigationBarState extends State<NavigationBar1> {
     });
   }
 
+  void _initApp(BuildContext context) {
+    AppUtil.screenWidth = MediaQuery.of(context).size.width;
+    AppUtil.screenHeight = MediaQuery.of(context).size.height;
+  }
+
   @override
   Widget build(BuildContext context) {
+    _initApp(context);
     return Scaffold(
       body: PageView(
         children: <Widget>[HomePage(), PersonPage()],

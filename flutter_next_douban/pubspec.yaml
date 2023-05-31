@@ -36,7 +36,7 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
   dio: ^4.0.6
-  pull_to_refresh: ^1.5.7
+  pull_to_refresh: ^2.0.0
   path_provider: ^2.0.5
 
 dev_dependencies:
@@ -53,23 +53,14 @@ dev_dependencies:
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
-
-# The following section is specific to Flutter packages.
 flutter:
-
-  # The following line ensures that the Material Icons font is
-  # included with your application, so that you can use the icons in
-  # the material Icons class.
   uses-material-design: true
-
-  # To add assets to your application, add an assets section, like this:
   assets:
-    - lib/images/scan.png
-    - lib/images/star_blue.png
-    - lib/images/star_grey.png
-    - lib/images/want_watch.png
-    - lib/images/has_watch.png
-
+    - assets/images/
+  # fonts:
+  #   - family: ShotClock
+  #     fonts:
+  #       - asset: utils/ShotClock.ttf
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 
