@@ -1,4 +1,4 @@
-// ignore_for_file: unused_element
+// ignore_for_file: unused_element, prefer_const_constructors
 
 import 'package:flutter/material.dart';
 
@@ -51,8 +51,12 @@ class FadeRoute extends PageRoute {
   @override
   Widget buildTransitions(BuildContext context, Animation<double> animation,
       Animation<double> secondaryAnimation, Widget child) {
-    // return transitionsBuilder(context, animation, secondaryAnimation, child);
-    return FadeTransition(opacity: animation, child: builder(context));
+    if (isActive) {
+      // return super.buildTransitions(context, animation, secondaryAnimation, child);
+      return FadeTransition(opacity: animation, child: builder(context));
+    } else {
+      return Padding(padding: EdgeInsets.zero);
+    }
   }
 
   Widget _defaultTransitionsBuilder(

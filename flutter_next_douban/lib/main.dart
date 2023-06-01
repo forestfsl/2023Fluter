@@ -4,6 +4,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_next_douban/module/home/NewPage.dart';
+import 'package:flutter_next_douban/module/home/NewPage1.dart';
 import 'package:flutter_next_douban/module/serach/search_page.dart';
 import 'package:flutter_next_douban/module/navigation_bar/navigation_bar.dart';
 
