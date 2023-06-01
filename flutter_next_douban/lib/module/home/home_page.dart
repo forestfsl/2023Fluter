@@ -2,9 +2,11 @@
 
 import 'dart:ffi';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_next_douban/module/category/category_page.dart';
 import 'package:flutter_next_douban/module/home/NewPage.dart';
+import 'package:flutter_next_douban/module/home/fade_route.dart';
 import 'package:flutter_next_douban/module/home/recomment_item.dart';
 import 'package:flutter_next_douban/module/model/douban_model.dart';
 import 'package:flutter_next_douban/module/public/app_util.dart';
@@ -26,7 +28,24 @@ class _HomeState extends State<HomePage> {
   }
 
   bool _onScanTapped() {
-    Navigator.pushNamed(context, '/newpage');
+    //第一种方式跳转
+    // Navigator.pushNamed(context, '/newpage');
+    //第二种方式跳转
+    // Navigator.push(
+    //     context, CupertinoPageRoute(builder: (context) => NewPage()));
+    //第三种方式跳转
+    // Navigator.push(
+    //     context,
+    //     PageRouteBuilder(
+    //         transitionDuration: Duration(milliseconds: 500),
+    //         pageBuilder: (BuildContext context, Animation<double> animation,
+    //             Animation secondaryAnimation) {
+    //           return FadeTransition(opacity: animation, child: NewPage());
+    //         }));
+    //第四种自定义路由
+    Navigator.push(context, FadeRoute(builder: (context) {
+      return NewPage();
+    }));
     return true;
   }
 

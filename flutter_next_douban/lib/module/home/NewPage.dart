@@ -18,11 +18,19 @@ class _NewPageState extends State<NewPage> with TickerProviderStateMixin {
     _controller =
         AnimationController(vsync: this, duration: Duration(seconds: 2));
     _curvedAnimation =
-        CurvedAnimation(parent: _controller, curve: Curves.bounceIn);
+        CurvedAnimation(parent: _controller, curve: Curves.easeIn);
+    // _curvedAnimation 和 _controller 代表展示两种不同的动画效果
     _animation = Tween(begin: 0.0, end: 300.0).animate(_curvedAnimation)
       ..addListener(() {
         setState(() {});
       });
+    _animation.addStatusListener((status) {
+      if (status == AnimationStatus.completed) {
+        _controller.reverse();
+      } else if (status == AnimationStatus.dismissed) {
+        _controller.forward();
+      }
+    });
   }
 
   @override
