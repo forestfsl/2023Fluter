@@ -3,6 +3,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_next_douban/module/home/NewPage.dart';
 import 'package:flutter_next_douban/module/serach/search_page.dart';
 import 'package:flutter_next_douban/module/navigation_bar/navigation_bar.dart';
 
@@ -19,7 +20,10 @@ class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   Map<String, WidgetBuilder> _routes() {
-    return {'/search': (BuildContext context) => SearchPage()};
+    return {
+      '/search': (BuildContext context) => SearchPage(),
+      '/newpage': (BuildContext context) => NewPage()
+    };
   }
 
   // This widget is the root of your application.

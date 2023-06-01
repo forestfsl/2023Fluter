@@ -4,6 +4,7 @@ import 'dart:ffi';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_next_douban/module/category/category_page.dart';
+import 'package:flutter_next_douban/module/home/NewPage.dart';
 import 'package:flutter_next_douban/module/home/recomment_item.dart';
 import 'package:flutter_next_douban/module/model/douban_model.dart';
 import 'package:flutter_next_douban/module/public/app_util.dart';
@@ -25,6 +26,7 @@ class _HomeState extends State<HomePage> {
   }
 
   bool _onScanTapped() {
+    Navigator.pushNamed(context, '/newpage');
     return true;
   }
 

@@ -25,17 +25,17 @@ class DisplayItem extends StatelessWidget {
       onTap: () {},
       child: Column(
         children: [
-          Image(
-            image: AssetImage('assets/images/bg_books_stack_default.png'),
-            width: 100,
-            height: 100,
-          ),
-          // FadeInImage.assetNetwork(
-          //     width: 80,
-          //     height: 112,
-          //     placeholder: "assets/images/bg_books_stack_default.png",
-          //     image:
-          //         "http://img2.woyaogexing.com/2023/05/31/2f8b6b3b6d75e53e3744d0b0d95b963a.jpg"),
+          // Image(
+          //   image: AssetImage('assets/images/bg_books_stack_default.png'),
+          //   width: 100,
+          //   height: 100,
+          // ),
+          FadeInImage.assetNetwork(
+              width: 80,
+              height: 112,
+              placeholder: "assets/images/bg_books_stack_default.png",
+              image:
+                  "http://img2.woyaogexing.com/2023/05/31/2f8b6b3b6d75e53e3744d0b0d95b963a.jpg"),
 
           Container(
             height: 10,
