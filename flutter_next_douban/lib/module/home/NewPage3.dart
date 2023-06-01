@@ -1,13 +1,11 @@
-// ignore_for_file: library_private_types_in_public_api, prefer_const_constructors, use_key_in_widget_constructors, unused_field, avoid_unnecessary_containers, unnecessary_overrides, sort_child_properties_last, unused_import, prefer_const_constructors_in_immutables, override_on_non_overriding_member, annotate_overrides, unused_local_variable, unused_element, avoid_print, prefer_final_fields, duplicate_import
+// ignore_for_file: library_private_types_in_public_api, prefer_const_constructors, use_key_in_widget_constructors, unused_field, avoid_unnecessary_containers, unnecessary_overrides, sort_child_properties_last, unused_import, prefer_const_constructors_in_immutables, override_on_non_overriding_member, annotate_overrides, unused_local_variable, unused_element
 
 import 'dart:io';
 
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_next_douban/module/public/app_util.dart';
 import 'dart:math' as math;
 import 'package:path_provider/path_provider.dart';
-import 'package:dio/dio.dart';
 
 class NewPage extends StatefulWidget {
   @override
@@ -16,7 +14,6 @@ class NewPage extends StatefulWidget {
 
 class _NewPageState extends State<NewPage> with TickerProviderStateMixin {
   int _counter = 0;
-  Dio _dio = Dio();
   @override
   void initState() {
     super.initState();
@@ -53,39 +50,6 @@ class _NewPageState extends State<NewPage> with TickerProviderStateMixin {
     });
     //做一个存储
     await (await _getLocalFile()).writeAsString('$_counter');
-
-    //发送网络请求
-    // _getNetwork();
-    // requestGetNetwork();
-    // requestPostNetwork();
-  }
-
-//dio 库发请求
-  void requestGetNetwork() async {
-    Response rsp;
-    rsp = await _dio.get("http://www.baidu.com");
-    print("###################################");
-    print(rsp.data);
-    print("###################################");
-  }
-
-  void requestPostNetwork() async {
-    Response rsp;
-    Future.wait([
-      _dio.post("http://www.baidu.com"),
-      _dio.post("http://www.douban.com")
-    ]);
-  }
-
-  void _getNetwork() async {
-    HttpClient httpClient = HttpClient();
-    HttpClientRequest request =
-        await httpClient.getUrl(Uri.parse('https://www.baidu.com'));
-    // request.headers.add(name, value); header
-    // request.add(data); body
-    HttpClientResponse response = await request.close();
-
-    print(response.headers);
   }
 
   @override
@@ -95,28 +59,10 @@ class _NewPageState extends State<NewPage> with TickerProviderStateMixin {
           title: Text('$_counter'),
         ),
         body: Center(
-            child: FutureBuilder(
-          future: _dio.get("https://api.github.com/orgs/flutterchina/repos"),
-          builder: (BuildContext context,
-              AsyncSnapshot<Response<dynamic>> snapshot) {
-            if (snapshot.connectionState == ConnectionState.done) {
-              Response? response = snapshot.data;
-              if (snapshot.hasError) {
-                return Text("network is error");
-              } else {
-                print(response!.data);
-                return Container();
-              }
-            }
-            return CircularProgressIndicator();
-          },
+            child: CustomPaint(
+          painter: _CircleProgressPainter(0.5, Colors.green, Colors.grey, 4),
+          size: Size(40, 40),
         )),
-        // body: Center(
-        //     child: CustomPaint(
-        //   painter: _CircleProgressPainter(0.5, Colors.green, Colors.grey, 4),
-        //   size: Size(40, 40),
-        // )
-        // ),
         floatingActionButton: FloatingActionButton(
           onPressed: onPressed,
           child: Icon(Icons.add),
