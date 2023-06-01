@@ -105,7 +105,7 @@ class _NewPageState extends State<NewPage> with TickerProviderStateMixin {
                 return Text("network is error");
               } else {
                 print(response!.data);
-                return Container();
+                return Text("network is done");
               }
             }
             return CircularProgressIndicator();
