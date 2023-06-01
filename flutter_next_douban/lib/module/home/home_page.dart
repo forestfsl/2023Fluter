@@ -10,6 +10,8 @@ import 'package:flutter_next_douban/module/home/fade_route.dart';
 import 'package:flutter_next_douban/module/home/recomment_item.dart';
 import 'package:flutter_next_douban/module/model/douban_model.dart';
 import 'package:flutter_next_douban/module/public/app_util.dart';
+import 'package:flutter_next_douban/module/serach/search_page.dart';
+import 'package:flutter_next_douban/module/widgets/jump_route.dart';
 import 'package:flutter_next_douban/module/widgets/root_page.dart';
 import 'package:flutter_next_douban/module/widgets/search_bar.dart';
 
@@ -22,8 +24,12 @@ class _HomeState extends State<HomePage> {
   void _onSearchBarTapped() {
     // Navigator.pushNamed(context, '/search');
     //临时假数据测试
-    Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) {
-      return CategoryPage(category: DoubanCategory.Movie);
+    // Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) {
+    //   return CategoryPage(category: DoubanCategory.Movie);
+    // }));
+
+    Navigator.push(context, JumpRoute(builder: (BuildContext context) {
+      return SearchPage();
     }));
   }
 
