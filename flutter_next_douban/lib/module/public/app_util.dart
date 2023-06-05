@@ -6,6 +6,22 @@ class AppUtil {
   static double screenWidth = 0.0;
   static double screenHeight = 0.0;
 
+  static int getRank(double rating) {
+    if (0 < rating && 2 >= rating) {
+      return 1;
+    } else if (2 < rating && 4 >= rating) {
+      return 2;
+    } else if (4 < rating && 6 >= rating) {
+      return 3;
+    } else if (6 < rating && 8 >= rating) {
+      return 4;
+    } else if (8 < rating && 10 >= rating) {
+      return 5;
+    } else {
+      return 0;
+    }
+  }
+
   static List<String> spiltWord(String word) {
     return word.split(',');
   }
