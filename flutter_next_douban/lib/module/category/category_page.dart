@@ -123,6 +123,7 @@ class _CategoryState extends State<CategoryPage>
   }
 
   Widget _configCategoryList() {
+    //这里初始化是为了解决Don't use one refreshController to multiple SmartRefresher,It will cause some unexpected bugs mostly
     _refreshController = RefreshController(initialRefresh: false);
     if (_dataSource.isPageLoading) {
       return CupertinoActivityIndicator();

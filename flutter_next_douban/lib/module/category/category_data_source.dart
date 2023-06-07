@@ -1,3 +1,5 @@
+// ignore_for_file: unused_element
+
 import 'package:flutter_next_douban/common/network/network_helper.dart';
 import 'package:flutter_next_douban/module/model/movie.dart';
 
@@ -38,6 +40,11 @@ class CategoryDataSource {
     String url =
         "https://movie.douban.com/j/search_subjects?type=movie&tag=%E7%83%AD%E9%97%A8&page_limit=50&page_start=$page";
     NetworkHelper.shared.requestDoubanList(url, _onMovieCallback);
+  }
+
+
+  void __onHotMovieCallback(int? statusCode, dynamic resultMap) {
+
   }
 
   void _onMovieCallback(int? statusCode, dynamic resultMap) {
