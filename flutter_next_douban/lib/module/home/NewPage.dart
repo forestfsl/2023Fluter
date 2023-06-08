@@ -1,4 +1,4 @@
-// ignore_for_file: library_private_types_in_public_api, prefer_const_constructors, use_key_in_widget_constructors, unused_field, avoid_unnecessary_containers, unnecessary_overrides, sort_child_properties_last, unused_import, prefer_const_constructors_in_immutables, override_on_non_overriding_member, annotate_overrides, unused_local_variable, unused_element, avoid_print, prefer_final_fields, duplicate_import, unnecessary_const, unused_catch_clause
+// ignore_for_file: library_private_types_in_public_api, prefer_const_constructors, use_key_in_widget_constructors, unused_field, avoid_unnecessary_containers, unnecessary_overrides, sort_child_properties_last, unused_import, prefer_const_constructors_in_immutables, override_on_non_overriding_member, annotate_overrides, unused_local_variable, unused_element, avoid_print, prefer_final_fields, duplicate_import, unnecessary_const, unused_catch_clause, nullable_type_in_catch_clause
 
 import 'dart:io';
 
@@ -37,7 +37,7 @@ class _NewPageState extends State<NewPage> with TickerProviderStateMixin {
       //方法名
       final int result = await platform.invokeMethod('getBatteryLevel');
       batteryLevel = 'Current Battery level is $result %';
-    } on PlatformException catch (e) {
+    } on MissingPlatformDirectoryException catch (e) {
       batteryLevel = "Fail to get current battery level";
     }
 
