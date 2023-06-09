@@ -20,7 +20,7 @@ class PopupWindows {
 }
 
 class _PopUpHelper {
-  static late final OverlayEntry _overlayEntry;
+  static OverlayEntry? _overlayEntry;
   static late bool _isVisible;
   static void createView(
       BuildContext context,
@@ -49,7 +49,7 @@ class _PopUpHelper {
         )),
       );
     });
-    Overlay.of(context).insert(_overlayEntry);
+    Overlay.of(context).insert(_overlayEntry!);
     _isVisible = true;
     if (needAutoClose) {
       Future.delayed(Duration(seconds: seconds)).then((value) => dismiss());
@@ -61,6 +61,7 @@ class _PopUpHelper {
       return;
     }
     _isVisible = false;
-    _overlayEntry.remove();
+    _overlayEntry!.remove();
+    // _overlayEntry = nullptr as OverlayEntry;
   }
 }

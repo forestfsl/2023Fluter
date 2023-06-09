@@ -37,7 +37,7 @@ class _HomeState extends State<HomePage> {
   bool _onScanTapped() {
     ToastUtil.show(context, '测试Toast');
     //第一种方式跳转
-    Navigator.pushNamed(context, '/newpage');
+    // Navigator.pushNamed(context, '/newpage');
     //第二种方式跳转
     // Navigator.push(
     //     context, CupertinoPageRoute(builder: (context) => NewPage()));
