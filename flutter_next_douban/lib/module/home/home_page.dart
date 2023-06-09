@@ -1,4 +1,4 @@
-// ignore_for_file: library_private_types_in_public_api, prefer_const_constructors, use_key_in_widget_constructors, prefer_const_literals_to_create_immutables, sized_box_for_whitespace
+// ignore_for_file: library_private_types_in_public_api, prefer_const_constructors, use_key_in_widget_constructors, prefer_const_literals_to_create_immutables, sized_box_for_whitespace, unused_import
 
 import 'dart:ffi';
 
@@ -15,6 +15,7 @@ import 'package:flutter_next_douban/module/widgets/jump_route.dart';
 import 'package:flutter_next_douban/module/widgets/root_page.dart';
 import 'package:flutter_next_douban/module/widgets/search_bar.dart';
 import 'package:next_widgets/next_widgets.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -35,7 +36,10 @@ class _HomeState extends State<HomePage> {
   }
 
   bool _onScanTapped() {
-    ToastUtil.show(context, '测试Toast');
+    Locale nextLocale = Localizations.localeOf(context);
+    print(nextLocale.countryCode);
+    print(nextLocale.languageCode);
+    // ToastUtil.show(context, '测试Toast');
     //第一种方式跳转
     // Navigator.pushNamed(context, '/newpage');
     //第二种方式跳转
